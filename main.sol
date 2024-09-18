@@ -21,12 +21,10 @@ contract StackContract is ERC20 {
     event RewardClaimed(address indexed user, uint256 amount);
 
     constructor(uint256 _initialValue) ERC20("KipuCoin", "KPC") {
-        // Mint initial tokens to the owner (for example, 1 million tokens)
         owner = msg.sender;
         _mint(owner, _initialValue * 10**decimals());
     }
 
-    //Modificador de onlyOwner
     modifier onlyOwner() {
         require(owner == msg.sender, "Only owner!!");
         _;

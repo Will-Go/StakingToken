@@ -5,3 +5,8 @@ nombre del token Kipu Coin
 
 Decription
 modificar
+
+
+
+Wilson Gong Wu
+nicolas florez jimenez

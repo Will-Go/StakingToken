@@ -2,8 +2,10 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract StackContract is ERC20 {
+contract StackContract is ERC20, Pausable, ReentrancyGuard {
     // The reward rate (tokens per second)
     uint256 public rewardRate = 8;
     address public owner;
@@ -30,8 +32,16 @@ contract StackContract is ERC20 {
         _;
     }
 
+    function pause() external onlyOwner {
+        _pause();
+    }
+
+    function unpause() external onlyOwner {
+        _unpause();
+    }
+
     // Function to stake tokens
-    function stake(uint256 amount) external {
+    function stake(uint256 amount) external whenNotPaused nonReentrant {
         require(amount > 0, "Cannot stake zero tokens");
 
         Staker storage staker = stakers[msg.sender];
@@ -55,7 +65,7 @@ contract StackContract is ERC20 {
     }
 
     // Function to unstake tokens and claim rewards
-    function unstake(uint256 amount) external {
+    function unstake(uint256 amount) external whenNotPaused nonReentrant {
         Staker storage staker = stakers[msg.sender];
         require(staker.stakedAmount >= amount, "Not enough staked tokens");
 

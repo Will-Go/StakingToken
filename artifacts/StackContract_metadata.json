@@ -131,6 +131,19 @@
 				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Paused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
 						"indexed": true,
 						"internalType": "address",
 						"name": "user",
@@ -188,6 +201,19 @@
 					}
 				],
 				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Unpaused",
 				"type": "event"
 			},
 			{
@@ -329,6 +355,26 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "paused",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -482,6 +528,13 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "unpause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -554,8 +607,14 @@
 				"Approval(address,address,uint256)": {
 					"details": "Emitted when the allowance of a `spender` for an `owner` is set by a call to {approve}. `value` is the new allowance."
 				},
+				"Paused(address)": {
+					"details": "Emitted when the pause is triggered by `account`."
+				},
 				"Transfer(address,address,uint256)": {
 					"details": "Emitted when `value` tokens are moved from one account (`from`) to another (`to`). Note that `value` may be zero."
+				},
+				"Unpaused(address)": {
+					"details": "Emitted when the pause is lifted by `account`."
 				}
 			},
 			"kind": "dev",
@@ -574,6 +633,9 @@
 				},
 				"name()": {
 					"details": "Returns the name of the token."
+				},
+				"paused()": {
+					"details": "Returns true if the contract is paused, and false otherwise."
 				},
 				"symbol()": {
 					"details": "Returns the symbol of the token, usually a shorter version of the name."
@@ -620,6 +682,22 @@
 				"dweb:/ipfs/QmcLLJppxKeJWqHxE2CUkcfhuRTgHSn8J4kijcLa5MYhSt"
 			]
 		},
+		"@openzeppelin/contracts/security/Pausable.sol": {
+			"keccak256": "0x0849d93b16c9940beb286a7864ed02724b248b93e0d80ef6355af5ef15c64773",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4ddabb16009cd17eaca3143feadf450ac13e72919ebe2ca50e00f61cb78bc004",
+				"dweb:/ipfs/QmSPwPxX7d6TTWakN5jy5wsaGkS1y9TW8fuhGSraMkLk2B"
+			]
+		},
+		"@openzeppelin/contracts/security/ReentrancyGuard.sol": {
+			"keccak256": "0xa535a5df777d44e945dd24aa43a11e44b024140fc340ad0dfe42acf4002aade1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://41319e7f621f2dc3733511332c4fd032f8e32ad2aa7fd6f665c19741d9941a34",
+				"dweb:/ipfs/QmcYR3bd862GD1Bc7jwrU9bGxrhUu5na1oP964bDCu2id1"
+			]
+		},
 		"@openzeppelin/contracts/token/ERC20/ERC20.sol": {
 			"keccak256": "0xc3e1fa9d1987f8d349dfb4d6fe93bf2ca014b52ba335cfac30bfe71e357e6f80",
 			"license": "MIT",
@@ -653,11 +731,11 @@
 			]
 		},
 		"main.sol": {
-			"keccak256": "0xdd776d1af8c3ccf8c265a1d55861179f7459fc7a95731b91fd5ef3b7d35a6407",
+			"keccak256": "0x2fdcd012d45ad490e6b5f125f80cc0f9660b3dbfc99765f84f9bae3fe4b03912",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://cc80338ef37c9717c4973b5b936f3d30f4c465279695728d87d30bbe49cdc83f",
-				"dweb:/ipfs/QmUrTsH2yA5dL1PHy6S9Yged29P9b27sr8VjY5gvTRwCx8"
+				"bzz-raw://6e9c80c6f933399e64c8ededd7a2efee29ec7269e2465809542ec5b82ac017fb",
+				"dweb:/ipfs/QmWyzY6U8qD3NXaxipS5M9wYTiPhokym26g1mcaqjDkGri"
 			]
 		}
 	},
